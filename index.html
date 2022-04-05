@@ -1,222 +1,386 @@
 <!doctype html>
+
+<!--
+
+    Welcome to the light side of the source, young padawan.
+
+    One step closer to learn something interesting you are...
+
+                               ____
+                            _.' :  `._
+                        .-.'`.  ;   .'`.-.
+               __      / : ___\ ;  /___ ; \      __
+             ,'_ ""--.:__;".-.";: :".-.":__;.--"" _`,
+             :' `.t""--.. '<@.`;_  ',@>` ..--""j.' `;
+                  `:-.._J '-.-'L__ `-- ' L_..-;'
+                    "-.__ ;  .-"  "-.  : __.-"
+                        L ' /.------.\ ' J
+                         "-.   "--"   .-"
+                        __.l"-:_JL_;-";.__
+                     .-j/'.;  ;""""  / .'\"-.
+                   .' /:`. "-.:     .-" .';  `.
+                .-"  / ;  "-. "-..-" .-"  :    "-.
+             .+"-.  : :      "-.__.-"      ;-._   \
+             ; \  `.; ;                    : : "+. ;
+             :  ;   ; ;                    : ;  : \:
+             ;  :   ; :                    ;:   ;  :
+            : \  ;  :  ;                  : ;  /  ::
+            ;  ; :   ; :                  ;   :   ;:
+            :  :  ;  :  ;                : :  ;  : ;
+            ;\    :   ; :                ; ;     ; ;
+            : `."-;   :  ;              :  ;    /  ;
+             ;    -:   ; :              ;  : .-"   :
+             :\     \  :  ;            : \.-"      :
+              ;`.    \  ; :            ;.'_..--  / ;
+              :  "-.  "-:  ;          :/."      .'  :
+               \         \ :          ;/  __        :
+                \       .-`.\        /t-""  ":-+.   :
+                 `.  .-"    `l    __/ /`. :  ; ; \  ;
+                   \   .-" .-"-.-"  .' .'j \  /   ;/
+                    \ / .-"   /.     .'.' ;_:'    ;
+                     :-""-.`./-.'     /    `.___.'
+                           \ `t  ._  /
+                            "-.t-._:'
+
+-->
+
+<!--
+
+    So you'd like to know how to use impress.js?
+
+    You've made the first, very important step -- you're reading the source code.
+    And that's how impress.js presentations are built -- with HTML and CSS code.
+
+    Believe me, you need quite decent HTML and CSS skills to be able to use impress.js effectively.
+    And what is even more important, you need to be a designer, too, because there are no default
+    styles for impress.js presentations, there is no default or automatic layout for them.
+
+    You need to design and build it by hand.
+
+    So...
+
+    Would you still like to know how to use impress.js?
+
+-->
+
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=1024" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <title>impress.js</title>
+    <title>impress.js | presentation tool based on the power of CSS3 transforms and transitions in modern browsers | by Bartek Szopka @bartaz</title>
 
-    <meta name="author" content="Fox Sun" />
+    <meta name="description" content="impress.js is a presentation tool based on the power of CSS3 transforms and transitions in modern browsers and inspired by the idea behind prezi.com." />
+    <meta name="author" content="Bartek Szopka" />
 
-    <!--<link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />-->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
 
+    <!--
+
+        Impress.js doesn't depend on any external stylesheet. Script adds all styles it needs for
+        presentation to work.
+
+        This style below contains styles only for demo presentation. Browse it to see how impress.js
+        classes are used to style presentation steps, or how to apply fallback styles, but I don't want
+        you to use them directly in your presentation.
+
+        Be creative, build your own. We don't really want all impress.js presentations to look the same,
+        do we?
+
+        When creating your own presentation get rid of this file. Start from scratch, it's fun!
+
+    -->
     <link href="css/impress-demo.css" rel="stylesheet" />
-    <link href="css/custom.css" rel="stylesheet" />
-    
+
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 </head>
 <body>
 
+<!--
+
+    That's the wrapper for your presentation steps. In this element all the impress.js magic happens.
+    It doesn't have to be a `<div>`. Only `id` is important here as that's how the script find it.
+
+    It's worth to notice the `impress-not-supported` class. This class means, that browser doesn't
+    support features required by impress.js, so you can apply some fallback styles in your CSS.
+    It's not necessary to add it manually on this element. If the script detects that browser is not
+    good enough it will add this class, but keeping it in HTML means that users without JavaScript
+    will also get fallback styles.
+
+    The class name on this element also depends on currently active presentation step. More details about
+    it can be found below, when `hint` element is being described.
+
+-->
 <div id="impress" class="impress-not-supported">
 
     <div class="fallback-message">
-        <p>你的浏览器<b>不支持</b> impress.js, 所以当前展示的是简化版。</p>
-        <p>为了获得更好的体验，请使用最新的 <b>Chrome</b>, <b>Safari</b> 或者 <b>Firefox</b> 浏览器。</p>
+        <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+        <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser. Upcoming version 10 of Internet Explorer <i>should</i> also handle it.</p>
     </div>
 
-    <div id="title" class="step" data-x="0" data-y="0" data-scale="4">
-        <span class="try">最佳技术分享工具</span>
-        <h1>impress.js<sup>*</sup></h1>
-        <span class="footnote"> <a href="#/exp1">浏览</a> <a href="#/dev1">创建</a> <a href="#/last">结语</a></span> 
+    <!--
+
+        Here is where interesting thing start to happen.
+
+        Each step of the presentation should be an element inside the `#impress` with a class name
+        of `step`. These step elements are positioned, rotated and scaled by impress.js, and
+        the 'camera' shows them on each step of the presentation.
+
+        Positioning information is passed through data attributes.
+
+        In the example below we only specify x and y position of the step element with `data-x="-1000"`
+        and `data-y="-1500` attributes. This means that **the center** of the element (yes, the center)
+        will be positioned in point x = -1000px and y = -1500px of the presentation 'canvas'.
+
+        It will not be rotated or scaled.
+
+    -->
+    <div id="bored" class="step slide" data-x="-1000" data-y="-1500" style="background: url(background.jpeg)">
+        <q style="font-size: 40px; color: rgba(57, 32, 63, 0.082);" >青年说党史</q>
+        <q style="font-size: 60px;" align='center'>党史上的今天</q>
     </div>
 
-    <!-- exp -->
-    <div id="exp1" class="step" data-x="-1300" data-y="1300" data-rotate="720">
-        <q>最新的 <b>Chrome</b>, <b>Safari</b> 或者 <b>Firefox</b> 浏览器，不支持IE、Opera。使用Chrome效果最佳。（请按空格键）</q>
+    <!--
+
+        The `id` attribute of the step element is used to identify it in the URL, but it's optional.
+        If it is not defined, it will get a default value of `step-N` where N is a number of slide.
+
+        So in the example below it'll be `step-2`.
+
+        The hash part of the url when this step is active will be `#/step-2`.
+
+        You can also use `#step-2` in a link, to point directly to this particular step.
+
+        Please note, that while `#/step-2` (with slash) would also work in a link it's not recommended.
+        Using classic `id`-based links like `#step-2` makes these links usable also in fallback mode.
+
+    -->
+    <div class="step slide" data-x="0" data-y="-1500">
+        <br><br><h1 style="font-size: 60px">1936年5月19日 红军西征</h1><br><br>
+        <p style="line-height: 42px">今天5月19号。1936年的今天，中国工农红军第一方面军发起西征战役。</p>
+        <p style="line-height: 42px">在日本帝国主义的铁蹄从东北逼进华北的时候，中国共产党把民族大义放在首位，敦促蒋介石共同抗日。5月初，红军东征回师后，中华苏维埃政府和中央革命军事委员会发表了《停战议和一致抗日通电》，表示愿意与一切进攻抗日红军的武装队伍，实行停战议和，以达到停战抗日的目的。但是，蒋介石坚持内战政策，拒绝议和，调集兵力准备进剿陕甘宁边区。</p>
     </div>
 
-    <div id="exp2" class="step" data-x="0" data-y="1300" data-rotate="720">
-        <q>浏览快捷键</q><br />
-        <q>上一页 <code>pg up</code> <code>left</code> <code>up</code><br />
-        下一页 <code>tab</code> <code>space</code> <code>pg down</code> <code>right</code> <code>down</code></q>
+    <div class="step slide" data-x="1000" data-y="-1500">
+        <br><br><h1 style="font-size: 40px;line-height: 42px">1938年5月19日 中国空军远征日本本土</h1><br><br>
+        <p style="line-height: 42px">1938年5月19日，中国空军远征日本本土。空军第十四队队长徐焕生、第八大队第十九队副队长佟彦博各驾飞机一架，自宁波夜飞日本长崎、福冈、久留米、佐贺及九州各城市散发传单。此为日本有史以来第一次被他国飞机袭扰。</p>
+        <p style="line-height: 42px">22日，周恩来、王明、吴玉章代表中共中央和八路军办事处对凯旋归来的中国空军人员进行慰问，周恩来发表讲话，赞扬他们的成绩。</p>
     </div>
 
-    <div id="exp3" class="step" data-x="1300" data-y="1300" data-rotate="720">
-        <q>也可以使用<a href="#/title"><code>链接</code></a>返回指定页面，也支持浏览器返回按钮。</q>
-    </div> 
+    <div class="step slide" data-x="2000" data-y="-1500">
 
-    <!-- dev -->
-    <div id="dev1" class="step" data-x="-2500" data-y="1000" data-rotate="90">
-        <q>1. 配置：标准的Html5页面<br /></q>
-<pre class="codeblock">
-&lt;!doctype html&gt;
-&lt;html lang="en"&gt;
-&lt;head&gt;
-    &lt;meta charset="utf-8" /&gt;
-    &lt;title&gt;impress.js&lt;/title&gt;
-    &lt;link href="css/impress-demo.css" rel="stylesheet" /&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;div id="impress" class="impress-not-supported"&gt;
-&lt;/div&gt;
-&lt;script src="js/impress.js"&gt;&lt;/script&gt;
-&lt;script&gt;impress();&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</pre>
+        <br><br><h1 style="font-size: 40px;line-height: 42px">1941年5月19日 毛泽东在延安高级干部会议上作《改造我们的学习》的报告</h1><br>
+
+        <p style="line-height: 42px">1941年5月19日，毛泽东在延安高级干部会议上作《改造我们的学习》的报告，深刻地批判了主观主义的恶劣作风，号 召全党树立理论和实际相统一的实事求是的马克思主义作风。７月１日，中共中央作出《关于增强党性的决定》。8月1日，又作出《关于调查研究的决定》。９月１０日至１０月２２日，中共中央政治局举行扩大会议，讨论了党的历史上、特别是土地革命战争时期的路线问题，确认在土地革命战争后期，王明、博古等人领导的党中央所犯的“左”倾错误是“路线错误”。</p>
+
     </div>
 
-    <div id="dev2" class="step" data-x="-2500" data-y="2000" data-rotate="90">
-        <q>2. 创建幻灯片：</q><br />
-        <p class="normal">每个幻灯片是一个&lt;div&gt;元素，其class名称叫做’step’。</p>
-<pre class="codeblock">
-&lt;div class="step"&gt;
-    My first slide
-&lt;/div&gt;
-</pre>
+    <!--
+
+        This is an example of step element being scaled.
+
+        Again, we use a `data-` attribute, this time it's `data-scale="4"`, so it means that this
+        element will be 4 times larger than the others.
+        From presentation and transitions point of view it means, that it will have to be scaled
+        down (4 times) to make it back to it's correct size.
+
+    -->
+    <div id="title" class="step" data-x="0" data-y="0" data-scale="4" style="background: rebeccapurple">
+        <span class="try">then you should try</span>
+        <h1>红军西征<sup></sup></h1>
+        <span class="footnote"><sup>*</sup> no rhyme intended</span>
     </div>
 
-    <div id="" class="step" data-x="-2500" data-y="3000" data-rotate="90">
-        <q>3. 数据属性：</q><br />
-        <p class="normal">用来描述幻灯片大小，切换等效果。</p>
-<pre class="codeblock">
-    data-x = 幻灯片的x坐标
-    data-y = 幻灯片的y坐标
-    data-scale = 通过指定一个值来进行缩放，data-scale为5则将会在你幻灯片原始尺寸基础放大5倍
-    data-rotate = 通过一个数字度数来确定旋转你的幻灯片
-    data-rotate-x = 为3D用，这个数字度数是它应该相对x轴旋转多少度。（前倾/后仰）
-    data-rotate-y = 为3D用，这个数字度数是它应该相对y轴旋转多少度。 （左摆/右摆）
-    data-rotate-z = 为3D用，这个数字度数是它应该相对z轴旋转多少度。
-</pre>
+    <!--
+
+        This element introduces rotation.
+
+        Notation shouldn't be a surprise. We use `data-rotate="90"` attribute, meaning that this
+        element should be rotated by 90 degrees clockwise.
+
+    -->
+    <div id="its" class="step" data-x="850" data-y="3000" data-rotate="90" data-scale="5">
+        <p>It's a <strong>presentation tool</strong> <br/>
+        inspired by the idea behind <a href="http://prezi.com">prezi.com</a> <br/>
+        and based on the <strong>power of CSS3 transforms and transitions</strong> in modern browsers.</p>
     </div>
 
-    <div id="" class="step" data-x="2500" data-y="1000" data-rotate="-90">
-        <q>第一张幻灯片：</q><br />
-        <p class="normal">让我们从一个初始的幻灯片开始，这个幻灯片已将它自己的x和y数据属性设置为0，所以会出现在页面的中间。</p>
-<pre class="codeblock">
-&lt;div class="step" data-x="0" data-y="0"&gt;
-    This is my first slide
-&lt;/div&gt;
-</pre>
+    <div id="big" class="step" data-x="3500" data-y="2100" data-rotate="180" data-scale="6">
+        <p>visualize your <b>big</b> <span class="thoughts">thoughts</span></p>
     </div>
 
-    <div id="" class="step" data-x="2500" data-y="2000" data-rotate="-90">
-        <q>第二张幻灯片：</q><br />
-        <p class="normal">第二个幻灯片的x值为500，但y值为0，这意味着当它活动的时候它将会出现在穿过x轴(向左滑动)500px的地方。</p>
-<pre class="codeblock">
-&lt;div class="step" data-x="500" data-y="0"&gt;
-    This is slide 2
-&lt;/div&gt;
-</pre>
+    <!--
+
+        And now it gets really exiting! We move into third dimension!
+
+        Along with `data-x` and `data-y`, you can define the position on third (Z) axis, with
+        `data-z`. In the example below we use `data-z="-3000"` meaning that element should be
+        positioned far away from us (by 3000px).
+
+    -->
+    <div id="tiny" class="step" data-x="2825" data-y="2325" data-z="-3000" data-rotate="300" data-scale="1">
+        <p>and <b>tiny</b> ideas</p>
     </div>
 
-    <div id="" class="step" data-x="2500" data-y="3000" data-rotate="-90">
-        <q>第三张幻灯片：</q><br />
-        <p class="normal">下一个幻灯片将同第2个幻灯片同样的x位置开始，但其y位置为-400，这将会是从顶部400px处滑入。</p>
-<pre class="codeblock">
-&lt;div class="step" data-x="500" data-y="-400"&gt;
-    This is slide 3
-&lt;/div&gt;
-</pre>
+    <div id="ing" class="step" data-x="3500" data-y="-850" data-rotate="270" data-scale="6">
+        <p>by <b class="positioning">positioning</b>, <b class="rotating">rotating</b> and <b class="scaling">scaling</b> them on an infinite canvas</p>
     </div>
 
-    <div id="" class="step" data-x="2500" data-y="4000" data-rotate="-90">
-        <q>第四张幻灯片：</q><br />
-        <p class="normal">使用缩放值来显示一个幻灯片如何放大缩小。</p>
-<pre class="codeblock">
-&lt;div class="step" data-x="500" data-y="-800" data-scale="0.5"&gt;
-    This is slide 4
-&lt;/div&gt;
-</pre>
-        <p class="normal">它的scale值为0.5，意味着它应该是一半的尺寸。当它变成活动的演示时将通过必需的倍数调节所有幻灯片的缩放尺寸。在这个示例中它的意思就是这个幻灯片应该正常显示（比例为1），它将需要被放大2倍 (0.5*2 = 1)，所有的其他幻灯片也将被放大至2倍而变成2倍大小。</p>
+    <div id="imagination" class="step" data-x="6700" data-y="-300" data-scale="6">
+        <p>the only <b>limit</b> is your <b class="imagination">imagination</b></p>
     </div>
 
-    <div id="" class="step" data-x="2500" data-y="5000" data-rotate="-90">
-        <q>第五张幻灯片：</q><br />
-        <p class="normal">旋转属性允许你旋转一个幻灯片到当前视图，幻灯片5被设置旋转50度。</p>
-<pre class="codeblock">
-&lt;div class="step" data-x="0" data-y="-800" data-rotate="90"&gt;
-    This is slide 5 and it rotates in.
-&lt;/div&gt;
-</pre>
-        <p class="normal">旋转属性允许你旋转一个幻灯片到当前视图，幻灯片5被设置旋转50度。</p>
+    <div id="source" class="step" data-x="6300" data-y="2000" data-rotate="20" data-scale="4">
+        <p>want to know more?</p>
+        <q><a href="http://github.com/bartaz/impress.js">use the source</a>, Luke!</q>
     </div>
 
-    <div id="" class="step" data-x="2500" data-y="6000" data-rotate="-90">
-        <q>3D转换：</q><br />
-        <p class="normal">你可为每个维度的轴指定旋转属性(x,y,z)。</p>
-<pre class="codeblock">
-&lt;div class="step" data-x="-2600" data-y="-800" 
-    data-rotate-x="30" data-rotate-y="-30" data-rotate-z="90" data-scale="4"&gt;
-This is slide 6 and it has a 3D transition AND a scale.
-&lt;/div&gt;
-</pre>
-        <p class="normal">x轴是横轴，意思是你可使事物倾斜(正值)或向后(负值)，y轴是竖轴，所以你可使事物向左摇摆(负值)或向右(正值)，z轴是纵轴，这将是旋转的东西向上（负值）和向下（正值）。</p>
+    <div id="one-more-thing" class="step" data-x="6000" data-y="4000" data-scale="2">
+        <p>one more thing...</p>
     </div>
 
+    <!--
 
-    <div id="" class="step" data-x="-2500" data-y="4000" data-rotate="90">
-        <q>组合：</q><br />
-        <p class="normal">你可以以你的想象力用不可思议的和令人惊奇的方式合并这些效果来创建你自己的幻灯片展示风格。</p>
-<pre class="codeblock">
-    实时数据演示(ajax请求后台数据)
-    定时器自动播放
-    触摸屏演示系统
-</pre>
+        And the last one shows full power and flexibility of impress.js.
+
+        You can not only position element in 3D, but also rotate it around any axis.
+        So this one here will get rotated by -40 degrees (40 degrees anticlockwise) around X axis and
+        10 degrees (clockwise) around Y axis.
+
+        You can of course rotate it around Z axis with `data-rotate-z` - it has exactly the same effect
+        as `data-rotate` (these two are basically aliases).
+
+    -->
+    <div id="its-in-3d" class="step" data-x="6200" data-y="4300" data-z="-100" data-rotate-x="-40" data-rotate-y="10" data-scale="2">
+        <p><span class="have">have</span> <span class="you">you</span> <span class="noticed">noticed</span> <span class="its">it's</span> <span class="in">in</span> <b>3D<sup>*</sup></b>?</p>
+        <span class="footnote">* beat that, prezi ;)</span>
     </div>
 
-    <div id="" class="step" data-x="-2500" data-y="5000" data-rotate="90">
-        <q>API：</q><br />
-        <p class="normal">使用impress.js提供的api来控制幻灯片的显示。</p>
-<pre class="codeblock">
-    var api = impress();
-    `api.next()` - 跳到下一张幻灯片,
-    `api.prev()` - 跳到上一张幻灯片
-    `api.goto(stepElement) - 跳到制定的幻灯片.
-</pre>
-    </div>
+    <!--
 
-    <div id="" class="step" data-x="-2500" data-y="6000" data-rotate="90">
-        <q>不支持的浏览器：</q><br />
-        <p class="normal">Impress自动检测浏览器支持与否，并且如果不支持则自动向wrapper“&lt;div&gt;”添加一个样式名称为“impress-not-supported”的样式，使用一些css我们可以在浏览器上向人们显示不支持Impress的信息。在开始的&lt;div id="impress"&gt;添加下面的内容：</p>
-<pre class="codeblock">
-&lt;div class="no-support-message"&gt;
-    Your browser doesn't support impress.js.  Try Chrome or Safari.
-&lt;/div&gt;
-</pre>
-        <p class="normal">然后，创建一个样式表单或引入一个已经存在的样式表单：</p>
-<pre class="codeblock">
-.no-support-message { display:none; }
-.impress-not-supported .no-support-message { display:block; }
-</pre>
-        <p class="normal">默认是隐藏消息的，但如果浏览器不支持时当前样式就会变成impress-not-supported。</p>
-    </div>
+        So to make a summary of all the possible attributes used to position presentation steps, we have:
 
-    <div id="" class="step" data-x="-2500" data-y="7000" data-rotate="90">
-        <q>全局预览：</q><br />
-        <p class="normal">增加一个id为overview的幻灯片</p>
-<pre class="codeblock">
-    &lt;div id="overview" class="step" data-x="1000" data-y="2000" data-scale="10"&gt;
-    &lt;/div&gt;
-</pre>
-    </div>
+        * `data-x`, `data-y`, `data-z` - they define the position of **the center** of step element on
+            the canvas in pixels; their default value is 0;
+        * `data-rotate-x`, `data-rotate-y`, 'data-rotate-z`, `data-rotate` - they define the rotation of
+            the element around given axis in degrees; their default value is 0; `data-rotate` and `data-rotate-z`
+            are exactly the same;
+        * `data-scale` - defines the scale of step element; default value is 1
 
-    <div id="last" class="step" data-x="0" data-y="3000" data-scale="3" data-rotate="720">
-        <q>结语：</q><br />
-        <p class="normal">没有做不到的，只有想不到的。</p>
-        <p class="normal">我的网站：<a href="//www.runoob.com" target="_blank">www.runoob.com</a></p>
-        <p class="normal">官方演示：<a href="//static.runoob.com/assets/impress-demo/index.html" target="_blank">点我</a></p>
-        <p class="normal">简易演示：<a href="//static.runoob.com/assets/impress-demo/example.html" target="_blank">点我</a></p>
-    </div>
-
-    <div id="overview" class="step" data-x="1000" data-y="2000" data-scale="10">
+    -->
+    <div id="overview" class="step" data-x="3000" data-y="1500" data-scale="10">
     </div>
 
 </div>
 
+<!--
 
+    Hint is not related to impress.js in any way.
+
+    But it can show you how to use impress.js features in creative way.
+
+    When the presentation step is shown (selected) it's element get's the class of "active" and `#impress` root
+    element get's the class based on active step id `step-ID` (where ID is the step id)... It probably is not
+    so clear because of all these IDs in here, so for example when the first step (the one with id of `bored`)
+    is active, `#impress` element get a class of `step-bored`.
+
+    This class is used by this hint below. Check CSS file to see how it's shown with delayed CSS animation.
+
+-->
+<div class="hint">
+    <p>Use a spacebar or arrow keys to navigate</p>
+</div>
+<script>
+if ("ontouchstart" in document.documentElement) {
+    document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
+}
+</script>
+
+<!--
+
+    Last, but not least.
+
+    To make all described above really work, you need to include impress.js in the page.
+    I strongly encourage to minify it first.
+
+    In here I just include full source of the script to make it more readable.
+
+    You also need to call a `impress()` function to initialize impress.js presentation.
+    And you should do it in the end of your document. Not only because it's a good practice, but also
+    because I should be done when the whole document is ready.
+    Of course you can wrap it in any kind of "DOM ready" event, but I was to lazy to do so ;)
+
+-->
 <script src="js/impress.js"></script>
 <script>impress();</script>
 
+<!--
+
+    The `impress()` function also gives you access to API to control the presentation.
+
+    Just store the result of the call:
+
+        var api = impress();
+
+    and you will get three functions you can call:
+
+        `api.next()` - moves to next step of the presentation,
+        `api.prev()` - moves to previous step of the presentation
+        `api.goto( stepElement ) - moves the presentation to given step element (the DOM element of the step).
+
+    You can also simply call `impress()` again to get the API, so `impress().next()` is also allowed.
+    Don't worry, it wont initialize the presentation again.
+
+    For some example uses of this API check the last part of the source of impress.js where the API
+    is used in event handlers.
+
+-->
+
 </body>
 </html>
+
+<!--
+
+    Now you know more or less everything you need to build your first impress.js presentation, but before
+    you start...
+
+    Oh, you've already cloned the code from GitHub?
+
+    You have it open in text editor?
+
+    Stop right there!
+
+    That's not how you create awesome presentations. This is only a code. Implementation of the idea that
+    first needs to grow in your mind.
+
+    So if you want to build great presentation take a pencil and piece of paper. And turn off the computer.
+
+    Sketch, draw and write. Brainstorm your ideas on a paper. Try to build a mind-map of what you'd like
+    to present. It will get you closer and closer to the layout you'll build later with impress.js.
+
+    Get back to the code only when you have your presentation ready on a paper. It doesn't make sense to do
+    it earlier, because you'll only waste your time fighting with positioning of useless points.
+
+    If you think I'm crazy, please put your hands on a book called "Presentation Zen". It's all about
+    creating awesome and engaging presentations.
+
+    Think about it. 'Cause impress.js may not help you, if you have nothing interesting to say.
+
+-->
+
+<!--
+
+    Are you still reading this?
+
+    For real?
+
+    I'm impressed! Feel free to let me know that you got that far (I'm @bartaz on Twitter), 'cause I'd like
+    to congratulate you personally :)
+
+    But you don't have to do it now. Take my advice and take some time off. Make yourself a cup of coffee, tea,
+    or anything you like to drink. And raise a glass for me ;)
+
+    Cheers!
+
+-->
+
