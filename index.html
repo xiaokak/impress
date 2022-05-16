@@ -185,10 +185,10 @@
         down (4 times) to make it back to it's correct size.
 
     -->
-    <div id="title" class="step" data-x="0" data-y="0" data-scale="4" style="background: rebeccapurple">
-        <span class="try">then you should try</span>
-        <h1>红军西征<sup></sup></h1>
-        <span class="footnote"><sup>*</sup> no rhyme intended</span>
+    <div id="title" class="step" data-x="0" data-y="0" data-scale="4">
+        <span class="try">1941.5-1945.4</span>
+        <h1>整风运动<sup></sup></h1>
+        <span class="footnote"><sup>*</sup>书本p156</span>
     </div>
 
     <!--
@@ -199,14 +199,15 @@
         element should be rotated by 90 degrees clockwise.
 
     -->
-    <div id="its" class="step" data-x="850" data-y="3000" data-rotate="90" data-scale="5">
-        <p>It's a <strong>presentation tool</strong> <br/>
-        inspired by the idea behind <a href="http://prezi.com">prezi.com</a> <br/>
-        and based on the <strong>power of CSS3 transforms and transitions</strong> in modern browsers.</p>
+    <div id="its" class="step" data-x="0" data-y="3000" data-rotate="90" data-scale="5">
+        <p style="font-size: 30px">延安整风运动是中国共产党历史上第一次大规模的整风运动。1941年5月，毛泽东同志在延安高级干部会议上作《改造我们的学习》的报告，标志着整风开始；1945年4月20日六届七中全会通过《关于若干历史问题的决议》为止。延安整风运动在中国共产党历史上具有深远的历史意义，它是党的建设史上的一个伟大创举。通过延安整风，全党确立了一条实事求是的辩证唯物主义的思想路线，使干部在思想上大大地提高一步，使党达到了空前的团结。</p>
     </div>
 
-    <div id="big" class="step" data-x="3500" data-y="2100" data-rotate="180" data-scale="6">
-        <p>visualize your <b>big</b> <span class="thoughts">thoughts</span></p>
+    <div id="big" class="step" data-x="2500" data-y="2100" data-rotate="180" data-scale="6">
+        <q class="title">三大优良作风</q>
+        <p class="sanda">理论联系实际</p>
+        <p class="sanda">密切联系群众</p>
+        <p class="sanda">批评与自我批评</p>
     </div>
 
     <!--
@@ -287,9 +288,9 @@
     This class is used by this hint below. Check CSS file to see how it's shown with delayed CSS animation.
 
 -->
-<div class="hint">
-    <p>Use a spacebar or arrow keys to navigate</p>
-</div>
+<!--<div class="hint">-->
+<!--    <p>Use a spacebar or arrow keys to navigate</p>-->
+<!--</div>-->
 <script>
 if ("ontouchstart" in document.documentElement) {
     document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
@@ -383,4 +384,15 @@ if ("ontouchstart" in document.documentElement) {
     Cheers!
 
 -->
-
+<style>
+    .sanda{
+        font-size: 40px;
+        text-align: left;
+        line-height: 100px;
+    }
+    .title{
+        font-size: 70px;
+        line-height: 150px;
+        position: relative;
+    }
+</style>
